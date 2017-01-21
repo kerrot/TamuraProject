@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Animator))]
@@ -58,29 +59,35 @@ public class PlayerControl : MonoBehaviour {
             return;
         }
 
-        WireControl freeWire = GetFreeWire();
-
-        if (freeWire != null)
+        if (EventSystem.current.currentSelectedGameObject == null)
         {
-            if (HitbyMouseDown)
+            WireControl freeWire = GetFreeWire();
+
+            if (freeWire != null)
             {
-				if (Input.GetMouseButtonDown(0))
+                if (HitbyMouseDown)
                 {
-                    freeWire.ShootWire();
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        freeWire.ShootWire();
+                    }
+                }
+                else
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        freeWire.PrepareShoot();
+                    }
+                    else if (Input.GetMouseButtonUp(0))
+                    {
+                        freeWire.ShootWire();
+                    }
                 }
             }
-            else
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    freeWire.PrepareShoot();
-                }
-                else if (Input.GetMouseButtonUp(0))
-                {
-                    freeWire.ShootWire();
-                }
-            }
+            return;
         }
+
+        
 
         if (rb2d.velocity.magnitude > speedLimit)
         {
