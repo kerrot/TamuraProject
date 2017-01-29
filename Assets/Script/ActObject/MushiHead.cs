@@ -69,6 +69,10 @@ public class MushiHead : MusiControl
                     Vector3.Distance(closer.transform.position, transform.position) < Vector3.Distance(destination.transform.position, transform.position))
                 {
                     destination = closer;
+                    if (OnChange != null)
+                    {
+                        OnChange(destination);
+                    }
                 }
             }
         });
@@ -101,6 +105,10 @@ public class MushiHead : MusiControl
                     {
                         lastDestination = destination;
                         destination = (paths[index].from.gameObject == destination) ? paths[index].to.gameObject : paths[index].from.gameObject;
+                        if (OnChange != null)
+                        {
+                            OnChange(destination);
+                        }
                         return;
                     }
                 }
@@ -109,6 +117,10 @@ public class MushiHead : MusiControl
             {
                 lastDestination = destination;
                 destination = (paths[0].from.gameObject == destination) ? paths[0].to.gameObject : paths[0].from.gameObject;
+                if (OnChange != null)
+                {
+                    OnChange(destination);
+                }
             }
         }
     }
@@ -147,6 +159,11 @@ public class MushiHead : MusiControl
             {
                 lastDestination = destination;
                 destination = tmpList[0];
+            }
+
+            if (OnChange != null)
+            {
+                OnChange(destination);
             }
         }
     }

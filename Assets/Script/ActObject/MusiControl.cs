@@ -8,4 +8,7 @@ public class MusiControl : HittableObject {
     public GameObject Destination { get { return destination; } }
 
     protected GameObject destination;
+
+    public delegate void DestinationEvent(GameObject obj);
+    public DestinationEvent OnChange;
 }
