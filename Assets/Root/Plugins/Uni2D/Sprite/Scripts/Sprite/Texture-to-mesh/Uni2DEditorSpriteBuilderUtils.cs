@@ -235,7 +235,7 @@ public static class Uni2DEditorSpriteBuilderUtils
 		// Optim. mesh
 		oSpriteMesh.RecalculateBounds( );
 		oSpriteMesh.RecalculateNormals( );
-		oSpriteMesh.Optimize( );
+		;
 		
 		oSpriteMesh.name = "mesh_Sprite_";
 		
@@ -636,7 +636,7 @@ public static class Uni2DEditorSpriteBuilderUtils
 		rMesh.name = "mesh_Sprite_" + rTextureToPolygonize.name;
 		rMesh.RecalculateBounds( );
 		rMesh.RecalculateNormals( );
-		rMesh.Optimize( );
+		;
 
 		return rMesh;
 	}
@@ -729,7 +729,7 @@ public static class Uni2DEditorSpriteBuilderUtils
 		{
 			rMesh.RecalculateBounds( );
 			rMesh.RecalculateNormals( );
-			rMesh.Optimize( );
+			;
 		}
 
 		return oMeshesList;
@@ -1715,7 +1715,7 @@ public static class Uni2DEditorSpriteBuilderUtils
 	public static void SetDefaultTextureImporterSettings( TextureImporter a_rTextureImporter, bool a_bIsReadable = true )
 	{
 		//Debug.Log("Set Default Importer Settings");
-		a_rTextureImporter.textureType    = TextureImporterType.Advanced;
+		a_rTextureImporter.textureType    = TextureImporterType.Default;
 		a_rTextureImporter.maxTextureSize = 4096;
 		a_rTextureImporter.textureFormat  = TextureImporterFormat.AutomaticTruecolor;
 		a_rTextureImporter.npotScale      = TextureImporterNPOTScale.None;
