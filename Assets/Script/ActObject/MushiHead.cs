@@ -196,7 +196,6 @@ public class MushiHead : MusiControl
             {
                 DieEffect.SetActive(true);
                 isdead = true;
-				GameObject.FindObjectOfType<PlayerControl> ().SetRevivePos (Vector3.zero);
 				GetComponent<Collider2D> ().enabled = false;
                 StartCoroutine(GameClear());
             }
@@ -210,6 +209,7 @@ public class MushiHead : MusiControl
     IEnumerator GameClear()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("GameClear");
+		GameObject.FindObjectOfType<PlayerControl> ().SetRevivePos (Vector3.zero);
+		SceneManager.LoadScene("GameClear");
     }
 }
